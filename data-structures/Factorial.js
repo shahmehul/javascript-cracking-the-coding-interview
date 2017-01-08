@@ -3,8 +3,6 @@
  */
 'use strict';
 var factorial = function(n) {
-	//var char_set = Array.apply(null, Array(256)).map(Boolean.prototype.valueOf, false);
-
 	let fact = n, i = n;
 	while(i > 1){
 		fact = fact * (i -1);
