@@ -4,6 +4,7 @@
  example : [2,11,37,42,56,0,12,3]
  */
 
+
 function shuffle(list) {
     var i, j, t;
     for (i = 1; i < list.length; i++) {
