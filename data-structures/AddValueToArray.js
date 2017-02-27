@@ -18,12 +18,12 @@ function doTheWork(arr) {
             break;
         }
     }
-    if (!arr.length) {
-        newArr.unshift(1);
-    } else {
+    if (arr.length) {
         while (arr.length) {
             newArr.unshift(arr.pop());
         }
+    } else if (newArr.indexOf(0) === 0) {
+        newArr.unshift(1);
     }
     return newArr;
 }

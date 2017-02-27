@@ -5,6 +5,7 @@
  {{{{abcd}}}} return 4
  {{{abcd} return wrong string
   */
+'use strict';
 function calculate(input){
     let par_count=0,maxcount=0;
     for(let i=0; i<input.length; i++){
@@ -22,6 +23,30 @@ function calculate(input){
     return maxcount;
 }
 
-console.log(calculate('{{{{{abcd}}}}}'));
+
+var input = '{abc[abc[]]}';
+var stack = [];
+
+function areParenthesisBalanaced(str){
+    for(let i = 0 ; i <= str.length - 1 ; i ++){
+        if (str.charAt(i) == '{' || str.charAt(i) == '['){
+            stack.push(str.charAt(i));
+        }else if (str.charAt(i) == '}' || str.charAt(i) == ']'){
+            let poped = stack.pop();
+            if (poped == '{' || poped == '['){
+                continue
+            }else {
+                return false;
+            }
+        }
+    }
+    if(stack.length == 0){
+        return true;
+    }
+}
+
+console.log(areParenthesisBalanaced(input));
+
+//console.log(calculate('{{{{{abcd}}}}}'));
 
 

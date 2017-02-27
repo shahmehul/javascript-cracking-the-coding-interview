@@ -3,6 +3,7 @@
  */
 
 //Method 1
+'use strict';
 var names = ["Mike","Matt","Nancy","Adam","Jenny","Nancy","Carl"];
 var uniqueNames = [];
 names.forEach(function(el,i){
@@ -24,6 +25,7 @@ function withOutNewArr(a) {
     }
     return a.slice(0, k + 1);
 }
+
 
 console.log(withOutNewArr([1, 1, 2, 2, 3, 3, 4, 4, 5, 5]));
 

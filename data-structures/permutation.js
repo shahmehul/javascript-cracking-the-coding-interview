@@ -35,10 +35,12 @@ function permutator(str) {
 
 		for (var i = 0; i < arr.length; i++) {
 			cur = arr.splice(i, 1);
+			console.log('cur',cur);
+			console.log('arr',arr);
 			if (arr.length === 0) {
 				results.push(memo.concat(cur));
 			}
-				permute(arr.slice(), memo.concat(cur));
+			permute(arr.slice(), memo.concat(cur));
 			arr.splice(i, 0, cur[0]);
 		}
 
@@ -48,5 +50,5 @@ function permutator(str) {
 	return permute(inputArr);
 }
 
-console.log(isPermutation('abc','cba'));
+//console.log(isPermutation('abc','cba'));
 console.log(permutator('abc'));

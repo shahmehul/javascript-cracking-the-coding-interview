@@ -6,7 +6,7 @@
 //2. Reverse first part: 4,3,2,1,5,6
 //3. Reverse second part: 4,3,2,1,6,5
 //4. Reverse the whole array: 5,6,1,2,3,4
-
+'use strict'
 var arr = [1,2,3,4,5,6];
 
 function rotate(order) {
@@ -39,5 +39,18 @@ function reverse(left,right){
 
     return arr;
 }
-rotate(4);
-console.log(arr);
+
+
+function rotateAnArraySecondMethod(array,k){
+    for(let i = 1 ; i <= k ; i ++){
+        let tmp = array.pop();
+        array.unshift(tmp);
+    }
+    return array;
+}
+
+console.log(rotateAnArraySecondMethod(arr,4));
+//console.log(array);
+
+//rotate(4);
+//console.log(arr);

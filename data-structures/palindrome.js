@@ -7,7 +7,7 @@
 // @retuns {Boolean} - true if a permutation of palindrome exists, false if it does not
 //Input: Tact Coa
 //Output: True (permutations: "taco cat", "atco eta", etc.)
-
+'use strict'
 function palindromePermutation(str){
 	var distinct = 0;
 	var s_array = [];
@@ -56,7 +56,32 @@ function oneAway(first, second) {
 	}
 	return true;
 }
+/* find the divisior first for example 12321 the divisor will be 10000 that is done is first while loop.
+*  now divide the number by devisor and get left value.
+*  use number modulo by 10 and get the right value.
+*  if left and right are not same then exit.
+*  if they are same then continue get new number without left and right. get new divisor devide by 100
+* */
 
-console.log(oneAway('ake', 'bake'));
+function isNumberAPalindrome(x) {
+	if (x < 0) return false;
+	let div = 1;
+	while (x / div >= 10) {
+		div *= 10;
+	}
+	while (x != 0) {
+		let l = Math.floor(x / div);
+		let r = x % 10;
+		if (l != r) return false;
+		x = (x % div) / 10;
+		x = Math.floor(x);
+		div /= 100;
+	}
+	return true;
+}
 
-//console.log(palindromePermutation('t taco cat t '));
+console.log(isNumberAPalindrome(12321));
+
+//console.log(oneAway('ake', 'bake'));
+
+//console.log(palindromePermutation('mad    a   m '));

@@ -20,4 +20,24 @@ function removeDuplicates(inputArray) {
     return outputArray;
 }
 
-console.log(myArray3);
+
+// merge array without using any extra space.
+
+function mergeArrayWithoutSpace() {
+    var a = [0,1,3,6,7,null,null,null,null];
+    var b = [1,2,2,3,4];
+    var bIndex = 0;
+    a.forEach(function (val, index) {
+        if (a[index] === null) {
+            a[index] = b[bIndex];
+            bIndex++;
+        }
+    });
+    a.sort();
+    console.log(a);
+}
+
+mergeArrayWithoutSpace();
+
+
+//console.log(myArray3);
