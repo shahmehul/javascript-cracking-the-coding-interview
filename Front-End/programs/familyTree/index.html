@@ -1,0 +1,134 @@
+<html>
+<head>
+	<style type="text/css">
+	#container {
+		max-width: 600px;
+		height: 400px;
+		margin: auto;
+	}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<script src="sigma.min.js"></script>
+	<script src="sigma.parsers.json.min.js"></script>
+	<script>
+	var input = [
+	{
+		node : 'n0' , type : 'parent', name : 'Dad', childs : ['n1','n2', 'n3','n4','n5']
+	},
+	{
+		node : 'n1' , type : 'child', name : 'Child1',childs : ['n6','n7']
+	},
+	{
+		node : 'n2' , type : 'child', name : 'Child2'
+	},
+	{
+		node : 'n3' , type : 'child', name : 'Child3', childs : ['n10', 'n11']
+	},
+	{
+		node : 'n4' , type : 'child', name : 'Child4'
+	},
+	{
+		node : 'n5' , type : 'child', name : 'Child5', childs : ['n8', 'n9']
+	},
+	{
+		node : 'n6' , type : 'child', name : 'C1'
+	},
+	{
+		node : 'n7' , type : 'child', name : 'C2'
+	},
+	{
+		node : 'n8' , type : 'child', name : 'C5-1'
+	},
+	{
+		node : 'n9' , type : 'child', name : 'C5-2'
+	},
+	{
+		node : 'n10' , type : 'child', name : 'n3-C1'
+	},
+	{
+		node : 'n11' , type : 'child', name : 'n3-C2'
+	}
+	];
+
+	var data = {nodes : [], edges : []};
+
+	function generateNodes(){
+		function getChilds(node){
+			if(!node.childs){
+				return false;
+			} else {
+				let childs = node.childs;
+				let childArray = [];
+				input.forEach(function(item,index){
+					if (childs.indexOf(item.node) !== -1){
+						childArray.push(item);
+					}
+				});
+				return childArray;
+			}
+		}
+
+		function paintRoot(node){
+				data.nodes.push({
+					id : node.node,
+					label : node.name,
+					x : 0,
+					y : 0,
+					size : 3
+				});
+		}
+
+		function paintChild(node){
+			let childs = getChilds(node);
+					var xis = [];
+					let parentNode = data.nodes.find(x => x.id == node.node);
+					var seriesMax = Math.floor(childs.length/2) > 1 ?  Math.floor(childs.length/2) : 1;
+					for (let i = 0; i <= seriesMax; i++) {
+						xis.push(i + parentNode.x);
+						if(i > 0){
+							xis.unshift(-i + parentNode.x);	
+						}
+					}
+
+					childs.forEach(function(child,i){
+						data.nodes.push({
+							id : child.node,
+							label : child.name,
+							x : xis.shift(),
+							y : parentNode.y+1,
+							size : 3
+						});
+
+						data.edges.push({
+							"id": `e${child.node}`,
+							"source": node.node,
+							"label" : 'child',
+							"target": child.node
+						});
+
+						if(child.childs){
+							paintChild(child);
+						}
+					});
+		}
+
+		input.forEach(function(node,index){
+			if(index == 0){
+				paintRoot(node);
+				if(node.childs){
+					paintChild(node,index);
+				}		
+			}	
+		});
+}
+
+generateNodes();
+var s = new sigma({
+	graph: data,
+	container: 'container'
+});
+</script>
+</body>
+</html>
