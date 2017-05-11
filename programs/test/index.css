@@ -1,0 +1,31 @@
+.done-true {
+    text-decoration: line-through;
+    color: grey;
+}
+
+#wrapper{
+    width:500px;
+    margin:0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    height: 500px;
+}
+
+.textfield{
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+body{
+    background-color: #dfdfdf;
+    font-family: monospace;
+    font-size: 16px;
+}
+.mainbtn{
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    width: 50px;
+    height: 35px;
+}

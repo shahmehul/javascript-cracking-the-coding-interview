@@ -1,0 +1,26 @@
+#wrapper{
+    background-color: #dfdfdf;
+    border:1px solid gainsboro;
+    font-size: 20px;
+    border-radius: 20px;
+    width: 160px;
+    padding: 20px;
+    position: absolute;
+    left:100px;
+    right:100px;
+    height: 100px;
+}
+.price{
+
+}
+.symbl{
+
+}
+
+.red{
+    color:red;
+}
+
+.green{
+    color:green;
+}

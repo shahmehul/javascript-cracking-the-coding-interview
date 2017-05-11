@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> My Stock App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body ng-app="myApp" >
+   <div id="wrapper" ng-controller="StockController as ctl">
+       <span class="symbl">{{stockVal.stockSymbl}}</span>
+       <span ng-class="{'green': stockVal.currentPrice > stockVal.oldPrice, 'red': stockVal.currentPrice < stockVal.oldPrice}" class="price">{{stockVal.currentPrice}}</span>
+   </div>
+</body>
+</html>
