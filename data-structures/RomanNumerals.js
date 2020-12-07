@@ -18,3 +18,47 @@ function deromanize( roman ) {
 }
 
 console.log(deromanize('XLVII'));
+
+
+
+//47
+
+/*function deromanize(input){
+  const stringArr = input.split('');
+  let count = 0;
+  
+  const numArray = stringArr.map(numeral => {
+    return lookup[numeral];  
+  })
+  
+  for(let i = 0; i < numArray.length; i++) {
+    if (i + 1 !== numArray.length) {
+      if (numArray[i] < numArray[i+1]) {
+        count += (numArray[i+1] - numArray[i]);
+        i++;
+      } else {
+        count += numArray[i]
+      }
+      
+    }
+    else {
+      count += numArray[i];
+    }
+  
+  }
+  
+  return count;
+  
+  
+  
+  
+} 
+
+
+//console.log(deromanize('IV'));
+console.log(deromanize('XLVII'));
+console.log(deromanize('MCCLVI'));
+console.log(deromanize('VI'));
+
+*/
+
