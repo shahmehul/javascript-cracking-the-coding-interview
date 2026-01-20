@@ -79,8 +79,6 @@ class MissingPositiveInterval {
         console.log('inside if, current interval is',this.intervals);
         return;
       }
-
-      debugger;
   
       for (let i = 0; i < this.intervals.length; i++) {
         let [start, end] = this.intervals[i];
@@ -102,14 +100,14 @@ class MissingPositiveInterval {
           return;
         }
   
-        // Insert new interval
+        // Insert new interval at start
         if (x < start) {
           this.intervals.splice(i, 0, [x, x]);
           return;
         }
       }
   
-      // Append at end
+      // Insert new interval at the end
       this.intervals.push([x, x]);
     }
   
