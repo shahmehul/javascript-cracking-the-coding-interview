@@ -19,12 +19,11 @@ function combinationSum(candidates,target) {
         }
         for (let i=start; i < candidates.length; i++) {
             const current = candidates[i];
-            
+            // add the current value to combination array.
             combo.push(current);
-            // exclude case
             backtrack(remaining - current, combo, i);
 
-            // include case.
+            // backtrack recursive call if value is less than zero.
             combo.pop();
         }
     }
