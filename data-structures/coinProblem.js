@@ -23,4 +23,35 @@ function getTheChange(input){
     return formattedChangeOutput;
 }
 
-console.log(getTheChange(74));
+
+var coinChangeDp = function(coins, amount) {
+  debugger;
+  const dp = new Array(amount + 1).fill(Infinity);
+  const prevCoin = new Array(amount + 1).fill(-1); // tracks last coin used
+  
+  dp[0] = 0; // base case: 0 coins for amount 0
+  
+  for (let i = 1; i <= amount; i++) {
+      for (let coin of coins) {
+          if (i - coin >= 0 && dp[i - coin] + 1 < dp[i]) {
+              dp[i] = dp[i - coin] + 1;
+              prevCoin[i] = coin; // record last coin used
+          }
+      }
+  }
+  
+  if (dp[amount] === Infinity) return [-1, []]; // no solution
+  
+  // Reconstruct coins used
+  const resultCoins = [];
+  let curr = amount;
+  while (curr > 0) {
+      const coin = prevCoin[curr];
+      resultCoins.push(coin);
+      curr -= coin;
+  }
+  
+  return [dp[amount], resultCoins]; // [min coins, coins used]
+};
+
+console.log(coinChangeDp([1, 10, 25, 10],74));
